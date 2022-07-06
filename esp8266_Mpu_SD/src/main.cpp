@@ -12,10 +12,10 @@
 
 #ifndef STASSID
 #define STASSID "Excellence"
-#define STAPSK  "Bobrek03"
+#define STAPSK "Bobrek03"
 #endif
-const char* ssid     = STASSID;
-const char* password = STAPSK;
+const char *ssid = STASSID;
+const char *password = STAPSK;
 
 #define OFFSET 0
 #define sleepPeriod 10000000ul
@@ -48,19 +48,19 @@ Adafruit_MPU6050 mpu;
 unsigned long myChannelNumber = 1789113;
 const char *myWriteAPIKey = "DQWYM7ET7PUDD11W";
 
-
-
 void setup()
 {
 
   Serial.begin(115200);
-  WiFi.mode(WIFI_STA);
+  /*WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED)
+  {
     delay(500);
     Serial.print(".");
-  }
-WiFiClient client;
+  }*/
+  
+  WiFiClient client;
   EEPROM.begin(512);
   value = EEPROM.read(address);
   delay(500);
@@ -89,19 +89,19 @@ WiFiClient client;
   dosya_no = dosya_no + 1;
   EEPROM.write(address, dosya_no);
   EEPROM.commit();
-  //ThingSpeak.begin(client); // Initialize ThingSpea
+  delay(100);
+  // ThingSpeak.begin(client); // Initialize ThingSpea
 }
 
 void loop()
 {
-   static bool wait = false;
+  static bool wait = false;
   WiFiClient client;
-   ThingSpeak.begin(client); // Initialize ThingSpea
+  ThingSpeak.begin(client); // Initialize ThingSpea
 
   Serial.println(str1);
   sensors_event_t a, g, temp;
   mpu.getEvent(&a, &g, &temp);
-  Serial.println(dosya_no);
   Serial.println(str1);
   gecen = millis() - baslangic;
   File dataFile = SD.open(str1, FILE_WRITE);
