@@ -44,7 +44,11 @@ void writeFile(fs::FS &fs, const char * path, const char * message){
 }
 void appendFile(fs::FS &fs, const char *path, const char *message)
 {
+<<<<<<< HEAD
   //Serial.printf("Appending to file: %s\n", path);
+=======
+  Serial.printf("Appending to file: %s\n", path);
+>>>>>>> c0f130a7b8b02c475c9677bf9491138ce1935297
 
   File file = fs.open(path, FILE_APPEND);
   if (!file)
@@ -52,7 +56,11 @@ void appendFile(fs::FS &fs, const char *path, const char *message)
     Serial.println("Failed to open file for appending");
     return;
   }
+<<<<<<< HEAD
   /* if (file.print(message))
+=======
+  if (file.print(message))
+>>>>>>> c0f130a7b8b02c475c9677bf9491138ce1935297
   {
     Serial.println("Message appended");
   }
@@ -60,8 +68,12 @@ void appendFile(fs::FS &fs, const char *path, const char *message)
   {
     Serial.println("Appended failed");
     return;
+<<<<<<< HEAD
   }*/
  
+=======
+  }
+>>>>>>> c0f130a7b8b02c475c9677bf9491138ce1935297
   file.close();
 }
 void setup()
@@ -96,7 +108,11 @@ void setup()
   
   str1 = "/" + dosya_adi + ".txt";
   writeFile(SD,str1.c_str(),str.c_str());
+<<<<<<< HEAD
   //Serial.println(str);
+=======
+  Serial.println(str);
+>>>>>>> c0f130a7b8b02c475c9677bf9491138ce1935297
   //appendFile(SD, str1.c_str(), str.c_str());
   delay(300);
 
@@ -110,12 +126,21 @@ void setup()
 void loop()
 {
   
+<<<<<<< HEAD
  // Serial.println(str1);
   sensors_event_t a, g,temp;
   mpu.getEvent(&a, &g, &temp);
   //Serial.println(dosya_no);
   gecen = millis() - baslangic;
   String olcum =String(a.acceleration.x) + "," + String(a.acceleration.y) + "," + String(a.acceleration.z) + "," + String(gecen) + "\n"; 
+=======
+  Serial.println(str1);
+  sensors_event_t a, g,temp;
+  mpu.getEvent(&a, &g, &temp);
+  Serial.println(dosya_no);
+  gecen = millis() - baslangic;
+  String olcum = String(ornek_no) + "," + String(a.acceleration.x) + "," + String(a.acceleration.y) + "," + String(a.acceleration.z) + "," + String(gecen) + "\n"; 
+>>>>>>> c0f130a7b8b02c475c9677bf9491138ce1935297
   appendFile(SD,str1.c_str(), olcum.c_str());
   Serial.println(olcum);
   ornek_no+=1;
